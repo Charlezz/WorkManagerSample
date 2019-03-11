@@ -8,10 +8,15 @@ import dagger.android.support.DaggerApplication
 
 class App : DaggerApplication() {
 
-//    @Inject
-//    lateinit var dataManager:DBHelper
+    companion object{
+        lateinit var context:Context
+    }
 
 
+    override fun onCreate() {
+        super.onCreate()
+        context = this
+    }
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         return DaggerAppComponent.builder().create(this)
     }
